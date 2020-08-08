@@ -1,0 +1,18 @@
+.board {
+    width: 350px;
+    min-height: 165px;
+    margin: 5% auto;
+    
+    background: #305F72;
+    border-radius: 5px;
+}
+
+.board > div {
+    padding: 5px 10px;
+}
+
+.board__title {
+    font-family: 'RobotoC';
+    font-weight: 500;
+    color: #F18C8E;
+}

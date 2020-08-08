@@ -1,0 +1,89 @@
+.tasks {
+    font-family: 'RobotoC';
+    color: #F1D1B5;
+    position: relative;
+}
+
+.tasks__item {
+    min-height: 30px;
+    padding: 5px;
+    margin-bottom: 5px;
+
+    background-color: #568EA6;
+    border-radius: 5px;
+    box-shadow: 0px 2px 0px 0px #1f3e49;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tasks__item:last-child {
+    margin-bottom: 0;
+}
+
+.tasks__item span {
+    width: calc(100% - 35px);
+    height: 100%;
+}
+
+.tasks__item textarea {
+    width: calc(100% - 35px);
+
+    background: transparent;
+    border: none;
+    resize: none;
+    outline: none;
+
+    font-family: 'RobotoC';
+    font-size: 1em;
+    color: #F0B7A4;
+}
+
+.tasks__editBtn, .tasks__delBtn {
+    width: 30px;
+    height: 30px;
+
+    vertical-align: bottom;
+
+    border: none;
+    outline: none;
+}
+
+.tasks__editBtn {
+    background: url('../../assets/img/buttons/edit.png') no-repeat;
+    background-size: 20px 20px;
+    background-position: center;
+    display: none;
+    
+    opacity: 50%;
+    transition: linear 0.5s;
+}
+
+.tasks__delBtn {
+    background: url('../../assets/img/buttons/delete.png') no-repeat;
+    background-size: 20px 20px;
+    background-position: center;
+
+    position: absolute;
+    bottom: 0;
+    margin: 0 0 -108px 115px;
+}
+
+.tasks__item:hover button {
+    display: block;
+}
+
+.tasks__editBtn:hover {
+    opacity: 100%;
+    transition: linear 0.5s;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.editable {
+    display: block;
+    opacity: 100%;
+}

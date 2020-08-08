@@ -1,0 +1,46 @@
+.input textarea {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+
+    background: #F18C8E;
+    border: none;
+    border-radius: 5px;
+    resize: none;
+    outline: none;
+
+    font-family: 'RobotoC';
+    font-size: 1em;
+    color: #305F72;
+    box-shadow: 0px 2px 0px 0px #1f3e49;
+}
+
+.input textarea::placeholder {
+    color: #305f729f;
+}
+
+.input button {
+    width: 100px;
+    height: 35px;
+
+    font-family: 'RobotoC';
+    font-size: 1em;
+    font-weight: 500;
+    color: #305F72;
+    box-shadow: 0px 2px 0px 0px #1f3e49;
+
+    background: #F18C8E;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.input button:hover {
+    background-color: #568EA6;
+    color: #F1D1B5;
+    transition: linear 0.5s;
+}
+
+.input button:active {
+    background-color: #F18C8E;
+}

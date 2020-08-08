@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+ul {
+  list-style: none;
+}
+
+@font-face {
+  font-family: 'RobotoC';
+  src: url('./assets/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'RobotoC';
+  src: url('./assets/fonts/Roboto_Condensed/RobotoCondensed-Light.ttf');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'RobotoC';
+  src: url('./assets/fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf');
+  font-weight: 500;
+}
