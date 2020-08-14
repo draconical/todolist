@@ -1,0 +1,48 @@
+.tasks__paginator {
+    display: flex;
+    align-items: center;
+    
+    position: absolute;
+    bottom: 0;
+    margin: 0 0 -106px 265px;
+}
+
+.tasks__paginator span {
+    padding: 0 5px;
+
+    font-family: 'RobotoC';
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.tasks__paginator button {
+    width: 24px;
+    height: 24px;
+
+    font-family: 'RobotoC';
+    font-size: 1em;
+    font-weight: 500;
+    color: #305F72;
+    box-shadow: 0px 2px 0px 0px #1f3e49;
+
+    background: #F18C8E;
+    border: none;
+    border-radius: 12px;
+    outline: none;
+
+    transition: linear 0.5s;
+}
+
+.tasks__paginator button:hover:not(.disabled) {
+    background-color: #568EA6;
+    color: #F1D1B5;
+    transition: linear 0.5s;
+}
+
+.tasks__paginator button:active {
+    background-color: #F18C8E;
+}
+
+.tasks__paginator .disabled {
+    opacity: 50%;
+}

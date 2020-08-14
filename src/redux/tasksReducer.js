@@ -5,11 +5,16 @@ let ADD_NEW_TASK = 'ADD_NEW_TASK'
 let DELETE_TASK = 'DELETE_TASK'
 let SET_DATA = 'SET_DATA'
 let SET_EDIT_ID = 'SET_EDIT_ID'
+let SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+let SET_TOTAL_TASKS_LENGTH = 'SET_TOTAL_TASKS_LENGTH'
 
 let initialState = {
     tasksData: [],
     newTaskText: '',
-    currentlyEditing: null
+    currentlyEditing: null,
+    tasksPerPage: 5,
+    totalTasksLength: null,
+    currentPage: 1
 }
 
 const tasksReducer = (state = initialState, action) => {
@@ -67,6 +72,16 @@ const tasksReducer = (state = initialState, action) => {
                 ...state,
                 currentlyEditing: action.id
             }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.p
+            }
+        case SET_TOTAL_TASKS_LENGTH:
+            return {
+                ...state,
+                totalTasksLength: action.num
+            }
         default:
             return state;
     }
@@ -79,5 +94,7 @@ export const addNewTask = (newTaskText) => ({ type: ADD_NEW_TASK, newTaskText })
 export const deleteTask = (id) => ({ type: DELETE_TASK, id })
 export const setData = (data) => ({ type: SET_DATA, data })
 export const setEditId = (id) => ({ type: SET_EDIT_ID, id })
+export const setCurrentPage = (p) => ({ type: SET_CURRENT_PAGE, p })
+export const setTotalTasksLength = (num) => ({ type: SET_TOTAL_TASKS_LENGTH, num })
 
 export default tasksReducer;
