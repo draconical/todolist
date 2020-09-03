@@ -1,16 +1,11 @@
 import React from 'react';
 import Tasks from './Tasks';
 import { connect } from 'react-redux';
-import { editTask, toggleIsDone, deleteTask, setData, setEditId, setCurrentPage, setTotalTasksLength } from '../../redux/tasksReducer'
+import { setEditId, setCurrentPage, setTotalTasksLength, getTasksThunk, deleteTaskThunk, updateTaskThunk, toggleIsDoneThunk } from '../../redux/tasksReducer'
 
 class TasksContainer extends React.Component {
     componentDidMount() {
-        fetch('http://localhost:3000/data/tasks.json')
-            .then((response) => response.json())
-            .then((data) => {
-                this.props.setData(data)
-                this.props.setTotalTasksLength(data.length)
-            })
+        this.props.getTasksThunk()
     }
     
     componentDidUpdate() {
@@ -19,11 +14,12 @@ class TasksContainer extends React.Component {
 
     render() {
         return (
-            <Tasks tasksData={this.props.tasksData} editTask={this.props.editTask}
-                toggleIsDone={this.props.toggleIsDone} deleteTask={this.props.deleteTask}
+            <Tasks tasksData={this.props.tasksData}
                 currentlyEditing={this.props.currentlyEditing} setEditId={this.props.setEditId}
                 currentPage={this.props.currentPage} tasksPerPage={this.props.tasksPerPage}
-                totalTasksLength={this.props.totalTasksLength} setCurrentPage={this.props.setCurrentPage}/>
+                totalTasksLength={this.props.totalTasksLength} setCurrentPage={this.props.setCurrentPage}
+                deleteTaskThunk={this.props.deleteTaskThunk} updateTaskThunk={this.props.updateTaskThunk}
+                toggleIsDoneThunk={this.props.toggleIsDoneThunk} />
         )
     }
 }
@@ -37,11 +33,11 @@ let mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {
-    editTask,
-    toggleIsDone,
-    deleteTask,
-    setData,
     setEditId,
     setCurrentPage,
-    setTotalTasksLength
+    setTotalTasksLength,
+    getTasksThunk,
+    deleteTaskThunk,
+    updateTaskThunk,
+    toggleIsDoneThunk
 })(TasksContainer);

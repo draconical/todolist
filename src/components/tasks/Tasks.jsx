@@ -14,10 +14,9 @@ const Tasks = (props) => {
         return (
             <Task id={task.id} isDone={task.isDone}
                 text={task.text} key={task.id}
-                editTask={props.editTask} toggleIsDone={props.toggleIsDone}
-                deleteTask={props.deleteTask}
                 currentlyEditing={props.currentlyEditing}
-                setEditId={props.setEditId} />
+                setEditId={props.setEditId} deleteTaskThunk={props.deleteTaskThunk}
+                updateTaskThunk={props.updateTaskThunk} toggleIsDoneThunk={props.toggleIsDoneThunk}/>
         )
     })
 

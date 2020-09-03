@@ -11,7 +11,7 @@ const Input = (props) => {
 
     let addNewTask = () => {
         if (props.newTaskText !== '') {
-            props.addNewTask();
+            props.addTaskThunk(props.newTaskText);
         } else {
             window.alert('Введите текст, пожалуйста!')
         }

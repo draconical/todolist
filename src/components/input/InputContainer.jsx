@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateNewTaskText, addNewTask } from '../../redux/tasksReducer'
+import { updateNewTaskText, addTaskThunk } from '../../redux/tasksReducer'
 import Input from './Input';
 
 class InputContainer extends React.Component {
@@ -9,7 +9,7 @@ class InputContainer extends React.Component {
             <Input tasksData={this.props.tasksData}
                 newTaskText={this.props.newTaskText}
                 updateNewTaskText={this.props.updateNewTaskText}
-                addNewTask={this.props.addNewTask} />
+                addTaskThunk={this.props.addTaskThunk} />
         )
     }
 }
@@ -21,5 +21,5 @@ let mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
     updateNewTaskText,
-    addNewTask
+    addTaskThunk
 })(InputContainer);

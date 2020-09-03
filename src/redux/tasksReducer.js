@@ -1,3 +1,5 @@
+import { tasksAPI } from "./tasksAPI"
+
 let EDIT_TASK = 'EDIT_TASK'
 let TOGGLE_IS_DONE = 'TOGGLE_IS_DONE'
 let UPDATE_NEW_TASK_TEXT = 'UPDATE_NEW_TASK_TEXT'
@@ -51,7 +53,7 @@ const tasksReducer = (state = initialState, action) => {
             return {
                 ...state,
                 tasksData: [...state.tasksData, {
-                    id: state.tasksData.length > 0 ? state.tasksData.pop().id + 1 : state.tasksData.length + 1,
+                    id: state.tasksData.length > 0 ? state.tasksData[state.tasksData.length - 1].id + 1 : state.tasksData.length + 1,
                     isDone: false,
                     text: state.newTaskText
                 }],
@@ -87,10 +89,64 @@ const tasksReducer = (state = initialState, action) => {
     }
 }
 
+export const getTasksThunk = () => {
+    return (dispatch) => {
+        tasksAPI.getTasks()
+            .then((data) => {
+                dispatch(setData(data))
+                dispatch(setTotalTasksLength(data.length))
+            })
+    }
+}
+
+export const addTaskThunk = (newTaskText) => {
+    return (dispatch) => {
+        tasksAPI.addTask(newTaskText)
+        .then(response => {
+            if (response.status === 200) {
+                dispatch(addNewTask())
+            }
+        })
+    }
+}
+
+export const deleteTaskThunk = (id) => {
+    return (dispatch) => {
+        tasksAPI.deleteTask(id)
+            .then(response => {
+                if (response.status === 200) {
+                    dispatch(deleteTask(id))
+                }
+            })
+    }
+}
+
+export const updateTaskThunk = (id, text) => {
+    return (dispatch) => {
+        tasksAPI.updateTask(id, text)
+            .then(response => {
+                if (response.status === 200) {
+                    dispatch(editTask(id, text))
+                }
+            })
+    }
+}
+
+export const toggleIsDoneThunk = (id) => {
+    return (dispatch) => {
+        tasksAPI.toggleIsDone(id)
+            .then(response => {
+                if (response.status === 200) {
+                    dispatch(toggleIsDone(id))
+                }
+            })
+    }
+}
+
 export const editTask = (id, text) => ({ type: EDIT_TASK, id, text })
 export const toggleIsDone = (id) => ({ type: TOGGLE_IS_DONE, id })
 export const updateNewTaskText = (newTaskText) => ({ type: UPDATE_NEW_TASK_TEXT, newTaskText })
-export const addNewTask = (newTaskText) => ({ type: ADD_NEW_TASK, newTaskText })
+export const addNewTask = () => ({ type: ADD_NEW_TASK })
 export const deleteTask = (id) => ({ type: DELETE_TASK, id })
 export const setData = (data) => ({ type: SET_DATA, data })
 export const setEditId = (id) => ({ type: SET_EDIT_ID, id })

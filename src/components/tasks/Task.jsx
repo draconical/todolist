@@ -12,13 +12,13 @@ const Task = (props) => {
     const editElement = React.createRef()
     let onTaskEdit = () => {
         let text = editElement.current.value
-        props.editTask(props.id, text)
+        props.updateTaskThunk(props.id, text)
     }
 
     return (
         <div className='tasks__item'>
             {props.currentlyEditing !== props.id
-                ? <span onClick={() => props.toggleIsDone(props.id)} className={props.isDone === true ? 'done' : null}>{props.text}</span>
+                ? <span onClick={() => props.toggleIsDoneThunk(props.id)} className={props.isDone === true ? 'done' : null}>{props.text}</span>
                 : <textarea ref={editElement} onChange={onTaskEdit.bind(this)} rows={3} value={props.text}></textarea>}
             <div>
                 {props.currentlyEditing !== props.id
@@ -27,7 +27,7 @@ const Task = (props) => {
             </div>
             {props.currentlyEditing !== props.id
                 ? null
-                : <button onClick={() => props.deleteTask(props.id)} className='tasks__delBtn'></button>}
+                : <button onClick={() => props.deleteTaskThunk(props.id)} className='tasks__delBtn'></button>}
         </div>
     )
 }
